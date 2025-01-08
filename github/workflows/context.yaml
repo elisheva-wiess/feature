@@ -1,25 +1,15 @@
-name: Context Information
+name: Basic Workflow
 on:
   push:
-    branches-ignore: main
+    branches: feature/basic-workflow
 jobs:
-  show-context:
-    name: Show Context
+  do-things:
+    name: Do Things
     runs-on: ubuntu-latest
     steps:
-      - name: Dump Event Information
-        env:
-          CONTEXT_ITEM: ${{ toJson(github) }}
-        run: echo "${CONTEXT_ITEM}"
-      - name: Dump Job Information
-        env:
-          CONTEXT_ITEM: ${{ toJson(job) }}
-        run: echo "${CONTEXT_ITEM}"
-      - name: Dump Runner Information
-        env:
-          CONTEXT_ITEM: ${{ toJson(runner) }}
-        run: echo "${CONTEXT_ITEM}"
-      - name: Dump Step Information
-        env:
-          CONTEXT_ITEM: ${{ toJson(steps) }}
-        run: echo "${CONTEXT_ITEM}"
+      - name: The Thing I've Done
+        run: echo "I've done a thing!"
+      - name: An Error I made
+        run: |
+          echo "I've made an error!"
+          exit 1
