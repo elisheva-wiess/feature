@@ -1,15 +1,19 @@
-name: Basic Workflow
+name: Environment Variables
 on:
   push:
-    branches: feature/basic-workflow
+    branches: feature/global-env
+env:
+  GLOBAL_VAR: test
 jobs:
-  do-things:
-    name: Do Things
+  first-job:
+    name: A Job
     runs-on: ubuntu-latest
     steps:
-      - name: The Thing I've Done
-        run: echo "I've done a thing!"
-      - name: An Error I made
-        run: |
-          echo "I've made an error!"
-          exit 1
+      - name: Output Global Variable
+        run: echo "${GLOBAL_VAR}"
+  second-job:
+    name: Another Job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output Global Variable
+        run: echo "${GLOBAL_VAR}"
